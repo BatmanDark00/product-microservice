@@ -12,6 +12,7 @@ export class ProductsController {
   // @Post()
   @MessagePattern({ cmd: 'create_product' })
   create(@Payload() createProductDto: CreateProductDto) {
+    // se usa @Payload para obtener el cuerpo del mensaje
     return this.productsService.create(createProductDto);
   }
 
@@ -45,8 +46,7 @@ export class ProductsController {
   }
 
   @MessagePattern({ cmd: 'validate_products' })
-  validateProduct( @Payload() ids: number[] ) {
+  validateProduct(@Payload() ids: number[]) {
     return this.productsService.validateProducts(ids);
   }
-
 }

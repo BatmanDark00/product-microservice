@@ -78,9 +78,9 @@ let ProductsService = class ProductsService extends client_1.PrismaClient {
         const products = await this.product.findMany({
             where: {
                 id: {
-                    in: ids
-                }
-            }
+                    in: ids,
+                },
+            },
         });
         if (products.length !== ids.length) {
             throw new microservices_1.RpcException({

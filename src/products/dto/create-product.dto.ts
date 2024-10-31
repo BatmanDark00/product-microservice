@@ -9,6 +9,6 @@ export class CreateProductDto {
     maxDecimalPlaces: 4,
   })
   @Min(0)
-  @Type(() => Number)
+  @Type(() => Number) // This is required to transform the string to number
   public price: number;
 }

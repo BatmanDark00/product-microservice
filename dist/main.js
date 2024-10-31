@@ -10,8 +10,8 @@ async function bootstrap() {
     const app = await core_1.NestFactory.createMicroservice(app_module_1.AppModule, {
         transport: microservices_1.Transport.NATS,
         options: {
-            servers: config_1.envs.natsServers
-        }
+            servers: config_1.envs.natsServers,
+        },
     });
     app.useGlobalPipes(new common_1.ValidationPipe({
         whitelist: true,

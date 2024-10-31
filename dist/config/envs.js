@@ -3,7 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.envs = void 0;
 require("dotenv/config");
 const joi = require("joi");
-const envsSchema = joi.object({
+const envsSchema = joi
+    .object({
     PORT: joi.number().required(),
     DATABASE_URL: joi.string().required(),
     NATS_SERVERS: joi.array().items(joi.string()).required(),
@@ -11,7 +12,7 @@ const envsSchema = joi.object({
     .unknown(true);
 const { error, value } = envsSchema.validate({
     ...process.env,
-    NATS_SERVERS: process.env.NATS_SERVERS?.split(',')
+    NATS_SERVERS: process.env.NATS_SERVERS?.split(','),
 });
 if (error) {
     throw new Error(`Config validation error: ${error.message}`);
